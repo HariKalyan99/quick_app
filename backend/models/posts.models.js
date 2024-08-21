@@ -1,0 +1,15 @@
+import mongoose from "mongoose";
+
+const postSchema = new mongoose.Schema({
+    userId: {type: Number, required: true},
+    title: {type: String, required: true, maxlength: 100},
+    body: {type: String, maxlength: 500},
+    reactions: {type: Number},
+    tags: {type: [String]},
+}, {timestamps: true});
+
+
+const Post = new mongoose.model('Post', postSchema);
+
+
+export default Post;
