@@ -46,11 +46,12 @@ import dotenv from 'dotenv';
 import connectToMongo from './db/connectToMongo.js';
 import authRoutes from './routes/auth.routes.js';
 import postRoutes from './routes/post.routes.js';
+import cors from 'cors'
 
 dotenv.config();
 
 const app = express();
-
+app.use(cors())
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/posts", postRoutes);

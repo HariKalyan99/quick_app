@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-const Createposts = () => {
+const Createposts = ({addPosts}) => {
    const userIdRef = useRef("");
    const titleRef = useRef("");
    const bodyRef = useRef("");
@@ -18,8 +18,7 @@ const Createposts = () => {
         const body = bodyRef.current.value
         const reactions = reactionsRef.current.value
         const tags = tagsRef.current.value.split("#");
-
-
+        addPosts({userId, title, body, reactions, tags})
     }
 
 
@@ -37,6 +36,8 @@ const Createposts = () => {
             <input type="number" id="reactions" placeholder="reactions" className="createInput" ref={reactionsRef}/>
             <label>tags</label>
             <input type="text" placeholder="put # after every tag" className="createInput" ref={tagsRef}/>
+
+            <button type="submit" className="btn btn-dark m-5 p-2 w-25">Add post</button>
         </form>
     </div>
   )
