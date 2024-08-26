@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Editposts from './Editposts';
+import { postStore } from '../store/PostStore';
 
-const Post = ({post, editPosts, deletePosts}) => {
+const Post = ({post}) => {
+    const {editPosts, deletePosts} = useContext(postStore)
     const [editView, setEditView] = useState(false);
 
    

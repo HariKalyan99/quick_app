@@ -1,6 +1,12 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
+import { postStore } from "../store/PostStore";
+import { useNavigate } from "react-router-dom";
 
-const Createposts = ({addPosts}) => {
+const Createposts = () => {
+
+  const {addPosts} = useContext(postStore);
+  const navigate = useNavigate("");
+
    const userIdRef = useRef("");
    const titleRef = useRef("");
    const bodyRef = useRef("");
@@ -18,7 +24,8 @@ const Createposts = ({addPosts}) => {
         const body = bodyRef.current.value
         const reactions = reactionsRef.current.value
         const tags = tagsRef.current.value.split("#");
-        addPosts({userId, title, body, reactions, tags})
+        addPosts({userId, title, body, reactions, tags});
+        navigate("/dashboard")
     }
 
 

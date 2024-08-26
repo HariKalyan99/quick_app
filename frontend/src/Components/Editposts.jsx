@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { postStore } from "../store/PostStore";
 
-const Editposts = ({editView,setEditView, editPosts, post}) => {
+const Editposts = ({editView,setEditView,  post}) => {
+  const {editPosts} = useContext(postStore)
   const [getUserId, setUserId] = useState(post.userId);
   const [getTitle, setTitle] = useState(post.title);
   const [getBody, setBody] = useState(post.body);
